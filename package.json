@@ -6,6 +6,10 @@
     "module": "src/main.ts",
     "scripts": {
         "link": "bun link",
+        "format": "bunx @biomejs/biome format --write ./src",
+        "format:check": "bunx @biomejs/biome format ./src",
+        "lint": "bunx @biomejs/biome check --apply ./src",
+        "lint:check": "bunx @biomejs/biome check ./src",
         "build": "bun run scripts/build.ts --dist",
         "update-mirror": "bun run scripts/update-mirror.ts",
         "build:executable": "bun run scripts/build.ts --executable"
