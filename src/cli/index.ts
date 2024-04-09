@@ -5,6 +5,7 @@ import { Command } from "commander";
 
 export enum OptionsList {
     biomejs = "biomejs",
+    eslint_prettier = "eslint_prettier",
 }
 
 export const run = async (): Promise<void> => {
@@ -18,7 +19,11 @@ export const run = async (): Promise<void> => {
         type: () =>
             p.select({
                 message: "What tool or utility would you like to configure?",
-                options: [{ value: "biomejs", label: "Biome.js" }],
+                options: [
+                    { value: "eslint_prettier", label: "ESLint + Prettier" },
+                    { value: "biomejs", label: "Biome.js" },
+                ],
+                maxItems: 5,
                 initialValue: "biomejs",
             }),
     });

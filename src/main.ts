@@ -12,6 +12,9 @@ const main = async () => {
         },
         async (err, data) => {
             console.log(bold(blueBright(data as string)));
+            console.log(
+                blueBright("Streamline the setup and configuration process for various tools and utilities.\n"),
+            );
             await run();
         },
     );
