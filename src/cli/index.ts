@@ -11,7 +11,7 @@ export enum OptionsList {
 export const run = async (): Promise<void> => {
     const program = new Command()
         .name("callisto")
-        .description("Streamline the setup and configuration process for various tools and utilities.")
+        .description("Automatically streamline the setup and configuration process for various tools and utilities.")
         .version(VERSION, "-v, --version", "display the version number")
         .parse(Bun.argv);
 
