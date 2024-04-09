@@ -1,16 +1,10 @@
 name: Code Quality
 
 on:
-    push:
-        branches:
-            - master
-    pull_request: []
-    workflow_dispatch:
-
-permissions:
-    contents: read
-    packages: write
-    actions: read
+  push:
+    branches:
+      - '*'
+  workflow_dispatch:
 
 jobs:
   main:
