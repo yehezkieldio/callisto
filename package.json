@@ -1,11 +1,13 @@
 {
     "name": "callisto",
+    "description": "Automatically streamline the setup and configuration process for various tools and utilities",
     "version": "0.0.1",
     "type": "module",
     "module": "src/main.ts",
     "scripts": {
         "link": "bun link",
         "build": "bun run scripts/build.ts --dist",
+        "update-mirror": "bun run scripts/update-mirror.ts",
         "build:executable": "bun run scripts/build.ts --executable"
     },
     "bin": {

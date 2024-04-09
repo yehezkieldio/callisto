@@ -4,3 +4,5 @@
  * ! Automatically updated by the build process, do not modify.
  */
 export const VERSION = "0.0.1";
+
+export const DESCRIPTION = "Automatically streamline the setup and configuration process for various tools and utilities";

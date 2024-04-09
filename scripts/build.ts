@@ -3,8 +3,8 @@ if (typeof Bun === "undefined") {
     process.exit(1);
 }
 
-import { getVersion } from "@/utils/get-version";
 import { $ } from "bun";
+import { updateMirror } from "./update-mirror";
 
 const flags = Bun.argv.filter((arg) => arg.startsWith("--"));
 
@@ -23,8 +23,7 @@ if (flags.includes("--dist")) {
 if (flags.includes("--executable")) {
     console.log("Creating a executable file build...");
 
-    // Update the version mirror in the source code
-    await $`sed -i 's/VERSION = ".*"/VERSION = "${await getVersion()}"/' ./src/utils/constants.ts`;
+    await updateMirror();
 
     // Build the executable file
     await $`bun build ./src/main.ts --compile --minify --outfile callisto`;
