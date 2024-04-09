@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 
+import { runCLi } from "@/cli/cli";
 import { DESCRIPTION } from "@/utils/constants";
 import { blue, blueBright } from "colorette";
 import figlet from "figlet";
@@ -12,7 +13,9 @@ if (typeof Bun === "undefined") {
 const main = async () => {
     figlet.text("callisto", { font: "Bell" }, async (_err, text) => {
         console.log(`\n\n${blue(text as string)}\n`);
-        console.log(`${blueBright(DESCRIPTION)}\n\n`);
+        console.log(`${blueBright(DESCRIPTION)}\n`);
+
+        await runCLi();
     });
 };
 
