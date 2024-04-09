@@ -1,7 +1,7 @@
 import { $ } from "bun";
 import { parseArgs } from "node:util";
 
-import { getVersion } from "../src/utils/get-version";
+import { getVersion } from "@/utils/get-version";
 
 const { values } = parseArgs({
     args: Bun.argv,
@@ -24,15 +24,9 @@ if (values.exec) {
     await $`sed -i 's/VERSION = ".*"/VERSION = "${await getVersion()}"/' ./src/utils/const.ts`;
 
     // Build the executable file
-    await $`bun build ./src/main.ts --compile --outfile callisto`;
+    await $`bun build ./src/main.ts --compile --minify --outfile callisto`;
 }
 
 if (values.dist) {
-    console.log("Creating a javascript distribution build...");
-
-    // Build the distribution files
-    await Bun.build({
-        entrypoints: ["./src/main.ts"],
-        outdir: "./dist",
-    });
+    console.error("Not implemented yet.");
 }
