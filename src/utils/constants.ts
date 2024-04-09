@@ -15,4 +15,5 @@ export const DESCRIPTION = "Automatically streamline the setup and configuration
 export const OPTIONS = {
     ESLINT_PRETTIER: "eslint_prettier",
     BIOME: "biome",
+    DOCKER_COMPOSE_POSTGRESQL: "docker_compose_postgresql",
 } as const;
