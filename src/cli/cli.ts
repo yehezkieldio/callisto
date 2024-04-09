@@ -11,13 +11,13 @@ export const runCLi = async (): Promise<void> => {
             p.select({
                 message: "What tool or utility would you like to configure?",
                 options: [
-                    { value: OPTIONS.biomejs, label: "Biome" },
-                    { value: OPTIONS.eslint_prettier, label: "ESLint + Prettier" },
+                    { value: OPTIONS.BIOME, label: "Biome" },
+                    { value: OPTIONS.ESLINT_PRETTIER, label: "ESLint + Prettier" },
                 ],
                 maxItems: 5,
-                initialValue: OPTIONS.biomejs as string,
+                initialValue: OPTIONS.BIOME as string,
             }),
     });
 
-    handleOptions(options.type as keyof typeof OPTIONS);
+    handleOptions(options.type as (typeof OPTIONS)[keyof typeof OPTIONS]);
 };

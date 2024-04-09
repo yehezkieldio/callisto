@@ -5,9 +5,14 @@
  */
 export const VERSION = "0.0.1";
 
+/**
+ * This description mirrors the package.json description.
+ * ! Automatically updated by the build process, do not modify.
+ */
 export const DESCRIPTION = "Automatically streamline the setup and configuration process for various tools and utilities";
 
+// The available options for the CLI.
 export const OPTIONS = {
-    eslint_prettier: "eslint_prettier",
-    biomejs: "biomejs",
+    ESLINT_PRETTIER: "eslint_prettier",
+    BIOME: "biome",
 } as const;

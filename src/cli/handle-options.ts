@@ -1,6 +1,12 @@
 import { biomeHandler } from "@/handler/biome";
-import type { OPTIONS } from "@/utils/constants";
+import { OPTIONS } from "@/utils/constants";
 
-export const handleOptions = async (options: keyof typeof OPTIONS): Promise<void> => {
-    options === "biomejs" && biomeHandler();
+export const handleOptions = async (options: (typeof OPTIONS)[keyof typeof OPTIONS]): Promise<void> => {
+    switch (options) {
+        case OPTIONS.BIOME:
+            await biomeHandler();
+            break;
+        default:
+            console.error("Invalid option selected.");
+    }
 };
