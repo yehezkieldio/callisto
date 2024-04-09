@@ -38,23 +38,38 @@ export const biomeHandler = async (): Promise<void> => {
         return;
     }
 
+    const dependencies: Partial<Record<string, string>> | undefined = packageJson?.dependencies;
     const devDependencies: Partial<Record<string, string>> | undefined = packageJson?.devDependencies;
+
     // Check if Biome.js is already installed in the project.
-    if (devDependencies && "@biomejs/biome" in devDependencies) {
+    if ((devDependencies && "@biomejs/biome" in devDependencies) || (dependencies && "@biomejs/biome" in dependencies)) {
         p.outro(redBright("Biome.js is already installed in this project."));
+        return;
+    }
+
+    // Check if Prettier and ESLint are already installed in the project.
+    // Since Biome.js is a replacement for Prettier and ESLint, we should not install it if they are already present.
+    if (
+        (devDependencies && ("prettier" in devDependencies || "eslint" in devDependencies)) ||
+        (dependencies && ("prettier" in dependencies || "eslint" in dependencies))
+    ) {
+        p.outro(redBright("Please remove Prettier and ESLint before installing Biome.js."));
         return;
     }
 
     const s = p.spinner();
 
+    // Install @biomejs/biome package using Bun Shell.
     s.start("Installing Biome.js");
     await $`bun add -D @biomejs/biome`.cwd(process.cwd()).quiet();
     s.stop("Successfully installed Biome.js");
 
+    // Create Biome configuration file using the preferred configuration.
     s.start("Creating Biome configuration file");
     await Bun.write(Bun.file(`${process.cwd()}/biome.json`), JSON.stringify(biomeConfig, null, 4));
     s.stop("Successfully created Biome configuration file");
 
+    // Add Biome scripts to format and lint to package.json.
     s.start("Adding Biome scripts to package.json");
     const scripts = packageJson.scripts ?? {};
 
