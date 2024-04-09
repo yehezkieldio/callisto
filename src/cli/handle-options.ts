@@ -1,5 +1,7 @@
 import { biomeHandler } from "@/handler/biome";
 import { OPTIONS } from "@/utils/constants";
+import * as p from "@clack/prompts";
+import { red } from "colorette";
 
 export const handleOptions = async (options: (typeof OPTIONS)[keyof typeof OPTIONS]): Promise<void> => {
     switch (options) {
@@ -7,6 +9,6 @@ export const handleOptions = async (options: (typeof OPTIONS)[keyof typeof OPTIO
             await biomeHandler();
             break;
         default:
-            console.error("Invalid option selected.");
+            p.outro(red("Invalid option selected."));
     }
 };
