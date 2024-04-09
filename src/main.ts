@@ -1,25 +1,12 @@
 #!/usr/bin/env bun
 
-import figlet from "figlet";
-import { run } from "./cli";
-import { blueBright, bold } from "colorette";
+if (typeof Bun === "undefined") {
+    console.error("This CLI script must be run with Bun.");
+    process.exit(1);
+}
 
 const main = async () => {
-    figlet.text(
-        "callisto",
-        {
-            font: "Bell",
-        },
-        async (err, data) => {
-            console.log(bold(blueBright(data as string)));
-            console.log(
-                blueBright(
-                    "Automatically streamline the setup and configuration process for various tools and utilities.\n",
-                ),
-            );
-            await run();
-        },
-    );
+    console.log("Hello, world!");
 };
 
 void main();
